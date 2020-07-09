@@ -13,6 +13,8 @@ import {
   ListItem,
   ListItemText,
   Divider,
+  useMediaQuery,
+  useTheme,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { NavLink } from 'react-router-dom';
@@ -42,6 +44,8 @@ const ListItemNav = ({ label, address }: ListNavItemProps) => {
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
   const { signed, signOut } = useAuth();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const handleOpen = useCallback(() => {
     setOpen(true);
@@ -122,7 +126,7 @@ const Header: React.FC = () => {
       elevation={0}
       style={{ backgroundColor: '#fff', borderBottom: `1px solid #eceef1` }}
     >
-      <Box pt={4} pb={4}>
+      <Box pt={matches ? 4 : 2} pb={matches ? 4 : 2}>
         <Container maxWidth="lg">
           <Grid
             container

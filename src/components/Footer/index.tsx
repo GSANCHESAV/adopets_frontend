@@ -1,13 +1,6 @@
 import React, { memo } from 'react';
 
-import {
-  Container,
-  Button,
-  Grid,
-  Box,
-  Link,
-  IconButton,
-} from '@material-ui/core';
+import { Container, Grid, Box, Link, IconButton } from '@material-ui/core';
 import { Instagram, Facebook, Twitter } from '@material-ui/icons';
 
 import Logo from '../../assets/img/logo-white.png';

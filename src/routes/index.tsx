@@ -8,6 +8,7 @@ import Product from '../pages/Product';
 
 const Routes: React.FC = () => (
   <Switch>
+    <Route path="/" exact component={Login} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/dashboard" component={Dashboard} isPrivate />

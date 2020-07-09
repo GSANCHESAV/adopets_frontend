@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import {
   TextField,
   Typography,
@@ -26,13 +26,13 @@ const RegisterForm: React.FC = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [visibility, setVisibility] = useState(false);
 
-  const handleShowPassword = () => {
+  const handleShowPassword = useCallback(() => {
     setVisibility(!visibility);
-  };
+  }, [visibility]);
 
-  const handleCloseAlert = () => {
+  const handleCloseAlert = useCallback(() => {
     setRegisterSuccess(false);
-  };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,7 +47,7 @@ const RegisterForm: React.FC = () => {
     }
   };
 
-  const endAdornmentComponent: React.FC = () => {
+  const EndAdornmentComponent = useMemo(() => {
     return (
       <InputAdornment position="end">
         <IconButton
@@ -59,7 +59,7 @@ const RegisterForm: React.FC = () => {
         </IconButton>
       </InputAdornment>
     );
-  };
+  }, [visibility, handleShowPassword]);
 
   return (
     <Grid container direction="column" justify="center" alignItems="center">
@@ -119,7 +119,7 @@ const RegisterForm: React.FC = () => {
                   autoComplete="current-password"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  endAdornment={endAdornmentComponent}
+                  endAdornment={EndAdornmentComponent}
                 />
               </FormControl>
               <TextField

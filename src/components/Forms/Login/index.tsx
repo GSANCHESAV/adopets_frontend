@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import {
   TextField,
   Typography,
@@ -23,9 +23,9 @@ const LoginForm: React.FC = () => {
   const [password, setPassword] = useState('');
   const [visibility, setVisibility] = useState(false);
 
-  const handleShowPassword = () => {
+  const handleShowPassword = useCallback(() => {
     setVisibility(!visibility);
-  };
+  }, [visibility]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const LoginForm: React.FC = () => {
     });
   };
 
-  const endAdornmentComponent: React.FC = () => {
+  const EndAdornmentComponent = useMemo(() => {
     return (
       <InputAdornment position="end">
         <IconButton
@@ -47,7 +47,7 @@ const LoginForm: React.FC = () => {
         </IconButton>
       </InputAdornment>
     );
-  };
+  }, [visibility, handleShowPassword]);
 
   return (
     <Grid container direction="column" justify="center" alignItems="center">
@@ -82,12 +82,12 @@ const LoginForm: React.FC = () => {
                 <InputLabel htmlFor="password">Password</InputLabel>
                 <OutlinedInput
                   id="password"
-                  label="Password  "
+                  label="Password"
                   type={visibility ? 'text' : 'password'}
                   autoComplete="current-password"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  endAdornment={endAdornmentComponent}
+                  endAdornment={EndAdornmentComponent}
                 />
               </FormControl>
             </Box>
