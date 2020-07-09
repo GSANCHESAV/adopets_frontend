@@ -9,8 +9,8 @@
 /coverage
 
 # production
-/buildo
-/utils/.env.json
+/build
+.env.json
 
 # misc
 .DS_Store
