@@ -64,7 +64,7 @@ const Product: React.FC = () => {
           <Grid container spacing={5} justify="flex-start" alignItems="center">
             <Avatar
               alt="Dog food"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4TjvWtNrU7r4OuRkwLexXrh-o5sJsriMd5g&usqp=CAU"
+              src="https://www.pngitem.com/pimgs/m/458-4584545_np-lamb-and-sweet-potato-dog-mockup-web.png"
               variant="rounded"
               style={{
                 width: '100%',
@@ -74,6 +74,7 @@ const Product: React.FC = () => {
                 fontSize: 44,
                 paddingLeft: 24,
                 paddingRight: 24,
+                borderRadius: 36,
               }}
             >
               {product.name &&
